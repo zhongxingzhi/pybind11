@@ -162,7 +162,10 @@ elseif(CMAKE_HOST_WIN32)
     if(NOT EXISTS "${PYTHON_LIBRARY}")
         message(FATAL_ERROR "Python libraries not found")
     endif()
-
+    
+elseif(APPLE)
+    set(PYTHON_LIBRARY
+        "${PYTHON_PREFIX}/lib/libpython${PYTHON_LIBRARY_SUFFIX}.dylib")
 else()
     if(PYTHON_MULTIARCH)
         set(_PYTHON_LIBS_SEARCH "${PYTHON_LIBDIR}/${PYTHON_MULTIARCH}" "${PYTHON_LIBDIR}")
